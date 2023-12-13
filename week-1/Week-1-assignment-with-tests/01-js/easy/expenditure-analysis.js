@@ -7,9 +7,27 @@
   Once you've implemented the logic, test your code by running
   - `npm run test-expenditure-analysis`
 */
-
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  var ans={};
+  var t=transactions;
+  for(var i=0;i<t.length;i++){
+  if(ans[t[i].category]){ans[t[i].category]+=t[i].price;}
+  else{ 
+ 
+    ans[t[i].category]=t[i].price;}
+  }
+var key= Object.keys(ans);
+console.log(ans);
+
+let answer=[];
+for(var i=0;i<key.length;i++){
+  var category=key[i];
+  answer.push({
+    "category": category,
+    "totalSpent": ans[category]
+  })
+}
+return answer;
 }
 
 module.exports = calculateTotalSpentByCategory;
